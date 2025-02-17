@@ -66,7 +66,7 @@ app.get("/about", (req, res) => {
         .catch(err => res.status(500).send(err));
 });
 
-// Site by ID Route
+
 app.get("/sites/:siteId", (req, res) => {
     siteData.getSiteById(req.params.siteId)
         .then(site => {
@@ -79,7 +79,7 @@ app.get("/sites/:siteId", (req, res) => {
         .catch(err => res.status(500).send(err));
 });
 
-// 404 Route
+
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });
