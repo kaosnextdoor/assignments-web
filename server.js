@@ -1,12 +1,14 @@
-/********************************************************************************
-*  WEB322 – Assignment 03
-* 
-*  I declare that this assignment is my own work in accordance with Seneca's
-*  Academic Integrity Policy:
-* 
-*  https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
-* 
-*  Name: _______Aliyah Ighodaro_______________ Student ID: ____140961236__________ Date: ____Feb 16, 2025__________
+/*********************************************************************************
+* WEB322 – Assignment 03
+*
+* I declare that this assignment is my own work in accordance with Seneca's
+* Academic Integrity Policy:
+*
+* https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
+*
+* Name: _____Aliyah Ighodaro_________________ Student ID: __140961236____________ Date: ___Feb. 17, 2025___________
+*
+* Published (web app) URL: https://assignments-web.vercel.app
 *
 ********************************************************************************/
 
