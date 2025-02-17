@@ -1,0 +1,52 @@
+<!--
+/********************************************************************************
+*  WEB322 – Assignment 03
+* 
+*  I declare that this assignment is my own work in accordance with Seneca's
+*  Academic Integrity Policy:
+* 
+*  https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
+* 
+*  Name: _______Aliyah Ighodaro_______________ Student ID: ____140961236__________ Date: ____Feb 16, 2025__________
+*
+********************************************************************************/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-gray-100">
+
+    <nav class="bg-blue-600 text-white p-4 flex justify-between">
+        <a href="/" class="text-xl font-bold">National Historic Sites</a>
+        <ul class="flex space-x-4">
+            <li><a href="/" class="hover:underline">Home</a></li>
+            <li><a class="active" href="/about">About</a></li>
+            <li>
+                <details class="dropdown">
+                    <summary class="cursor-pointer">Region</summary>
+                    <ul class="dropdown-menu">
+                        <li><a href="/sites?region=Central Canada">Central Canada</a></li>
+                        <li><a href="/sites?region=Atlantic Region">Atlantic Region</a></li>
+                        <li><a href="/sites?region=West Coast">West Coast</a></li>
+                        <li><a href="/sites?region=Prairie Provinces">Prairie Provinces</a></li>
+                        <li><a href="/sites?region=North">North</a></li>  
+                </details>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container mx-auto mt-10 text-center">
+        <div class="hero bg-red-400 p-8 rounded-lg">
+            <h1 class="text-5xl font-bold">404</h1>
+            <p class="text-lg mt-2">Page not found.</p>
+            <a href="/" class="btn btn-primary mt-4">Home</a>
+        </div>
+    </div>
+
+</body>
+</html>

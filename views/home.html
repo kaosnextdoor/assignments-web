@@ -1,0 +1,95 @@
+<!--
+/********************************************************************************
+*  WEB322 – Assignment 03
+* 
+*  I declare that this assignment is my own work in accordance with Seneca's
+*  Academic Integrity Policy:
+* 
+*  https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
+* 
+*  Name: _______Aliyah Ighodaro_______________ Student ID: ____140961236__________ Date: ____Feb 16, 2025__________
+*
+********************************************************************************/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Historic Sites</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-gray-100">
+
+
+    <nav class="bg-blue-600 text-white p-4 flex justify-between">
+        <a href="/" class="flex items-center text-lg font-semibold">
+            National Historic Sites
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Canada_%28Pantone%29.svg/1200px-Flag_of_Canada_%28Pantone%29.svg.png" class="w-6 h-6 mr-2"> 
+        </a>
+        <ul class="flex space-x-4">
+            <li><a href="/" class="active hover:underline">Home</a></li>
+            <li><a class="active" href="/about">About</a></li>
+            <li>
+                <details class="dropdown">
+                    <summary class="cursor-pointer">Region</summary>
+                    <ul class="dropdown-menu">
+                        <li><a href="/sites?region=Central Canada">Central Canada</a></li>
+                        <li><a href="/sites?region=Atlantic Region">Atlantic Region</a></li>
+                        <li><a href="/sites?region=West Coast">West Coast</a></li>
+                        <li><a href="/sites?region=Prairie Provinces">Prairie Provinces</a></li>
+                        <li><a href="/sites?region=North">North</a></li>           
+                    </ul>
+                </details>
+            </li>
+        </ul>
+    </nav>
+
+    
+    <div class="container mx-auto mt-10">
+        <div class="hero bg-blue-300 p-8 rounded-lg text-center">
+            <a href="/sites" class="btn btn-primary mt-4">View All Sites</a>
+        </div>
+
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            
+            <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="https://www.pc.gc.ca/apps/dfhd/Resources/Images/Image.aspx?id=81148" class="w-full h-40 object-cover">
+                <div class="p-4">
+                    <h2 class="text-2xl font-semibold">Public Grounds of the Parliament Buildings</h2>
+                    <p class="mt-2">The focal point for national celebrations in Ottawa; the grounds were originally designed by Calvert Vaux, and since supplemented by 18 monuments and memorials</p>
+                    <p class="mt-1"><strong>Date:</strong> 1875 (initial completion)</p>
+                    <p><strong>Location:</strong> Ottawa, ON</p>
+                    <a href="/sites/ON016" class="btn btn-secondary mt-4">Learn More</a>
+                </div>
+            </div>
+
+            
+            <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="https://novascotia.com/wp-content/uploads/2024/09/37795.webp" class="w-full h-40 object-cover">
+                <div class="p-4">
+                    <h2 class="text-2xl font-semibold">Cable Building</h2>
+                    <p class="mt-2">Newfoundland was a major telecommunications hub at the beginning of the 20th century as it offered the shortest link between North America and Europe; the building was the main relay for the transatlantic network of the Western Union Telegraph Company</p>
+                    <p class="mt-1"><strong>Date:</strong> 1913 (completed)</p>
+                    <p><strong>Location:</strong> Bay Roberts, NL</p>
+                    <a href="/sites/NL004" class="btn btn-secondary mt-4">Learn More</a>
+                </div>
+            </div>
+
+           
+            <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="https://www.banff-springs-hotel.com/content/uploads/2024/10/BanffSprings_2021_WinterSummer_Selects.00_21_54_01.Still032-4-scaled.jpg" class="w-full h-40 object-cover">
+                <div class="p-4">
+                    <h2 class="text-2xl font-semibold">Banff Springs Hotel</h2>
+                    <p class="mt-2">A former railway hotel constructed in Scottish Baronial style at the base of Sulphur Mountain, built to replace a wooden 1888 hotel which burned down in 1926</p>
+                    <p class="mt-1"><strong>Date:</strong> 1928 (completed)</p>
+                    <p><strong>Location:</strong> Banff, AB</p>
+                    <a href="/sites/AB005" class="btn btn-secondary mt-4">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
