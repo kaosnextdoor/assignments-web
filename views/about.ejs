@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-gray-100">
+    <%- include('partials/navbar', { page: '/about' }) %>
+
+    <div class="container mx-auto mt-10">
+        <div class="hero bg-blue-300 p-8 rounded-lg text-center">
+            <h1 class="text-4xl font-bold">About</h1>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div>
+                <img src="https://moises.ai/_next/image/?url=https%3A%2F%2Fstorage.googleapis.com%2Fmoises-cms%2Fhow_to_reading_sheet_music_image_338d99b137%2Fhow_to_reading_sheet_music_image_338d99b137.jpg&w=1920&q=75" class="rounded-lg shadow-lg">
+            </div>
+            <div class="bg-white p-6 shadow-lg rounded-lg">
+                <h2 class="text-2xl font-semibold">About Me</h2>
+                <p class="mt-2">
+                    Hi, I'm Aliyah Ighodaro! I love software development and music. I am in my third semester at Seneca College studying Computer Programming and Analysis.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

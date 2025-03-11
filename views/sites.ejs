@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Collection</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <%- include('partials/navbar', { page: '/sites' }) %>
+    <main>
+        <h1>Site Collection</h1>
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Site Name</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Region</th>
+                <th>Details</th>
+            </tr>
+            <% sites.forEach(site => { %>
+                <tr>
+                    <td><img src="<%= site.image %>" alt="Site Image" width="100"></td>
+                    <td><%= site.name %></td>
+                    <td>Date: <%= site.date %> (<%= site.dateType %>) <br> Designated: <%= site.designated %></td>
+                    <td>
+                        <%= site.location %>, 
+                        <a href="/sites?provinceOrTerritory=<%= site.provinceOrTerritoryObj.name %>">
+                            <button><%= site.provinceOrTerritoryObj.name %></button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/sites?region=<%= site.provinceOrTerritoryObj.region %>">
+                            <button><%= site.provinceOrTerritoryObj.region %></button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/sites/<%= site.siteId %>">
+                            <button>Details</button>
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    </main>
+</body>
+</html>

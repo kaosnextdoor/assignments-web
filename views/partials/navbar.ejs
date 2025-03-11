@@ -1,0 +1,21 @@
+<nav class="bg-gray-800 p-4">
+    <ul class="flex space-x-4">
+        <li>
+            <a href="/" class="text-white px-3 py-2 rounded-md <%= (page == '/') ? 'bg-blue-500' : 'hover:bg-gray-700' %>">
+                Home
+            </a>
+        </li>
+        <li>
+            <a href="/sites" class="text-white px-3 py-2 rounded-md <%= (page == '/sites') ? 'bg-blue-500' : 'hover:bg-gray-700' %>">
+                View Site Collection
+            </a>
+        </li>
+        <li>
+            <a href="/about" class="text-white px-3 py-2 rounded-md <%= (page == '/about') ? 'bg-blue-500' : 'hover:bg-gray-700' %>">
+                About
+            </a>
+        </li>
+    </ul>
+</nav>
+
+

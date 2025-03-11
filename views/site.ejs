@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= site.name %> - Site Details</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <%- include('partials/navbar', { page: '/site' }) %>
+
+    <main>
+        <h1><%= site.name %></h1>
+        <img src="<%= site.image || '/images/placeholder.png' %>" alt="Site Image" width="200">
+
+        <p><strong>Date:</strong> <%= site.date %> (<%= site.dateType %>)</p>
+        <p><strong>Designated:</strong> <%= site.designated %></p>
+        <p><strong>Location:</strong> <%= site.location %></p>
+
+        <p><strong>Region:</strong> 
+            <a href="/sites?region=<%= site.provinceOrTerritoryObj.region %>">
+                <button><%= site.provinceOrTerritoryObj.region %></button>
+            </a>
+        </p>
+
+        <p><strong>Province/Territory:</strong> 
+            <a href="/sites?provinceOrTerritory=<%= site.provinceOrTerritoryObj.name %>">
+                <button><%= site.provinceOrTerritoryObj.name %></button>
+            </a>
+        </p>
+
+        <h2>Random Quote</h2>
+        <blockquote><%= quote.content %> — <%= quote.author %></blockquote>
+
+        <br>
+        <a href="/sites"><button>Back to Sites</button></a>
+    </main>
+</body>
+</html>
+

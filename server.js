@@ -16,12 +16,15 @@ const siteData = require("./modules/data-service");
 const express = require("express");
 const app = express();
 const path = require("path");
+const axios = require("axios");
 const HTTP_PORT = process.env.PORT || 8080;
 
 app.use(express.static(__dirname +
 '/public'));
 
 app.set('views', __dirname + '/views');
+app.set("view engine", "ejs");
+
 
 
 siteData.initialize()
@@ -32,7 +35,7 @@ siteData.initialize()
 });
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "views", "home.html"));
+    res.render("home", { page: "/" });
   });
   
 
@@ -41,45 +44,50 @@ app.get("/home", (req,res) => {
 });
 
 app.get("/about", (req, res) => {
-    res.sendFile(path.join(__dirname, "views", "about.html"));
+    res.render("about", { page: "/about" });
+  });  
+
+
+  app.get("/sites", async (req, res) => {
+    try {
+        let sites;
+        if (req.query.region) {
+            sites = await siteData.getSitesByRegion(req.query.region);
+        } else if (req.query.provinceOrTerritory) {
+            sites = await siteData.getSitesBySubRegion(req.query.provinceOrTerritory);
+        } else {
+            sites = await siteData.getAllSites();
+        }
+
+        res.render("sites", { sites, page: "/sites" });
+    } catch (error) {
+        res.status(404).render("404", { message: "No matching sites found." });
+    }
+});
+
+
+
+
+app.get("/sites/:id", async (req, res) => {
+    try {
+        const site = await siteData.getSiteById(req.params.id); 
+        if (!site) {
+            return res.status(404).render("404", { message: "Site not found" });
+        }
+
+        const quoteResponse = await axios.get("http://quotable.io/random");
+        const quote = quoteResponse.data;
+        res.render("site", { site, quote });
+
+    } catch (error) {
+        res.status(500).render("404", { message: "Error retrieving site data." });
+    }
+});
+
+  
+
+
+  app.use((req, res) => {
+    res.status(404).render("404", { message: "Page not found" });
   });
-
-  app.get("/sites", (req, res) => {
-    let { region, provinceOrTerritory } = req.query;
-
-    if (region) {
-        siteData.getSitesByRegion(region)
-            .then(data => res.json(data))
-            .catch(err => res.status(500).send(err));
-        return;
-    }
-
-    if (provinceOrTerritory) {
-        siteData.getSitesBySubRegion(provinceOrTerritory)
-            .then(data => res.json(data))
-            .catch(err => res.status(500).send(err));
-        return;
-    }
-
-    siteData.getAllSites()
-        .then(data => res.json(data))
-        .catch(err => res.status(500).send(err));
-});
-
-
-app.get("/sites/:siteId", (req, res) => {
-    siteData.getSiteById(req.params.siteId)
-        .then(site => {
-            if (site) {
-                res.json(site);
-            } else {
-                res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
-            }
-        })
-        .catch(err => res.status(500).send(err));
-});
-
-
-app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
-});
+  
