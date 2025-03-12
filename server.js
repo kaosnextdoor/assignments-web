@@ -75,14 +75,18 @@ app.get("/sites/:id", async (req, res) => {
             return res.status(404).render("404", { message: "Site not found" });
         }
 
-        const quoteResponse = await axios.get("http://quotable.io/random");
-        const quote = quoteResponse.data;
+        const response = await fetch("http://quotable.io/random");
+        if (!response.ok) {
+            throw new Error("Failed to fetch quote");
+        }
+        const quote = await response.json();
         res.render("site", { site, quote });
 
     } catch (error) {
         res.status(500).render("404", { message: "Error retrieving site data." });
     }
 });
+
 
   
 
