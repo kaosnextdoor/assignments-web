@@ -16,7 +16,6 @@ const siteData = require("./modules/data-service");
 const express = require("express");
 const app = express();
 const path = require("path");
-const axios = require("axios");
 const HTTP_PORT = process.env.PORT || 8080;
 
 app.use(express.static(__dirname +
