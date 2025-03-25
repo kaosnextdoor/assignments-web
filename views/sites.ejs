@@ -9,7 +9,11 @@
 <body>
     <%- include('partials/navbar', { page: '/sites' }) %>
     <main>
-        <h1>Site Collection</h1>
+        <h1 class="text-4xl font-bold">
+            Site Collection 
+            <span class="text-base text-primary">(<%= sites.length %>)</span>
+          </h1>
+          
         <table>
             <tr>
                 <th>Image</th>
@@ -26,13 +30,13 @@
                     <td>Date: <%= site.date %> (<%= site.dateType %>) <br> Designated: <%= site.designated %></td>
                     <td>
                         <%= site.location %>, 
-                        <a href="/sites?provinceOrTerritory=<%= site.provinceOrTerritoryObj.name %>">
-                            <button><%= site.provinceOrTerritoryObj.name %></button>
+                        <a href="/sites?provinceOrTerritory=<%= site.ProvinceOrTerritory.name %>">
+                            <button><%= site.ProvinceOrTerritory.name %></button>
                         </a>
                     </td>
                     <td>
-                        <a href="/sites?region=<%= site.provinceOrTerritoryObj.region %>">
-                            <button><%= site.provinceOrTerritoryObj.region %></button>
+                        <a href="/sites?region=<%= site.ProvinceOrTerritory.region %>">
+                            <button><%= site.ProvinceOrTerritory.region %></button>
                         </a>
                     </td>
                     <td>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Site</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-gray-100">
+
+  <%- include('partials/navbar', { page: '' }) %>
+
+  <div class="container mx-auto mt-10">
+    <div class="hero bg-yellow-300 p-8 rounded-lg text-center">
+      <h1 class="text-4xl font-bold">Edit Site: <%= site.site %></h1>
+    </div>
+
+    <form class="bg-white p-6 rounded-lg shadow-lg mt-6" method="POST" action="/editSite">
+      <input type="hidden" name="id" value="<%= site.siteId %>" />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" name="siteId" value="<%= site.siteId %>" readonly class="input input-bordered w-full bg-gray-100 cursor-not-allowed" />
+        <input type="text" name="site" value="<%= site.site %>" required class="input input-bordered w-full" />
+        <input type="url" name="image" value="<%= site.image %>" required class="input input-bordered w-full" />
+        <input type="number" name="date" value="<%= site.date %>" required class="input input-bordered w-full" />
+        <input type="text" name="dateType" value="<%= site.dateType %>" required class="input input-bordered w-full" />
+        <input type="number" name="designated" value="<%= site.designated %>" required class="input input-bordered w-full" />
+        <input type="text" name="location" value="<%= site.location %>" required class="input input-bordered w-full" />
+        <input type="number" step="0.00000001" name="latitude" value="<%= site.latitude %>" required class="input input-bordered w-full" />
+        <input type="number" step="0.00000001" name="longitude" value="<%= site.longitude %>" required class="input input-bordered w-full" />
+
+        <select name="provinceOrTerritoryCode" required class="select select-bordered w-full">
+          <% provincesAndTerritories.forEach(prov => { %>
+            <option value="<%= prov.code %>" <%= (site.provinceOrTerritoryCode == prov.code) ? "selected" : "" %>>
+              <%= prov.name %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <textarea name="description" class="textarea textarea-bordered w-full mt-4" required><%= site.description %></textarea>
+
+      <div class="mt-4 flex gap-4">
+        <button type="submit" class="btn btn-success">Update Site</button>
+        <a href="/deleteSite/<%= site.siteId %>" class="btn btn-error">Delete Site</a>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

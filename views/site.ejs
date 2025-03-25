@@ -18,19 +18,21 @@
         <p><strong>Location:</strong> <%= site.location %></p>
 
         <p><strong>Region:</strong> 
-            <a href="/sites?region=<%= site.provinceOrTerritoryObj.region %>">
-                <button><%= site.provinceOrTerritoryObj.region %></button>
+            <a href="/sites?region=<%= site.ProvinceOrTerritory.region %>">
+                <button><%= site.ProvinceOrTerritory.region %></button>
             </a>
         </p>
 
         <p><strong>Province/Territory:</strong> 
-            <a href="/sites?provinceOrTerritory=<%= site.provinceOrTerritoryObj.name %>">
-                <button><%= site.provinceOrTerritoryObj.name %></button>
+            <a href="/sites?provinceOrTerritory=<%= site.ProvinceOrTerritory.name%>">
+                <button><%= site.ProvinceOrTerritory.name%></button>
             </a>
         </p>
 
         <h2>Random Quote</h2>
         <blockquote><%= quote.content %> — <%= quote.author %></blockquote>
+
+        <a href="/editSite/<%= site.siteId %>" class="btn btn-success">Edit Site</a>
 
         <br>
         <a href="/sites"><button>Back to Sites</button></a>

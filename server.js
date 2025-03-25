@@ -21,6 +21,8 @@ const HTTP_PORT = process.env.PORT || 8080;
 app.use(express.static(__dirname +
 '/public'));
 
+app.use(express.urlencoded({ extended: true }));
+
 app.set('views', __dirname + '/views');
 app.set("view engine", "ejs");
 
@@ -87,8 +89,57 @@ app.get("/sites/:id", async (req, res) => {
 });
 
 
+app.get("/addSite", (req, res) => {
+    siteData.getAllProvincesAndTerritories()
+      .then(provincesAndTerritories => {
+        res.render("addSite", { provincesAndTerritories });
+      })
+      .catch(err => {
+        res.status(500).render("500", { message: `I'm sorry, but we have encountered the following error: ${err}` });
+      });
+  });
   
 
+  app.post("/addSite", (req, res) => {
+    siteData.addSite(req.body)
+      .then(() => res.redirect("/sites"))
+      .catch(err => {
+        res.render("500", { message: `I'm sorry, but we have encountered the following error: ${err}` });
+      });
+  });
+
+  app.get("/editSite/:id", (req, res) => {
+    siteData.getSiteById(req.params.id)
+      .then(site => {
+        siteData.getAllProvincesAndTerritories()
+          .then(provincesAndTerritories => {
+            res.render("editSite", { site, provincesAndTerritories });
+          })
+          .catch(err => {
+            res.status(404).render("404", { message: err });
+          });
+      })
+      .catch(err => {
+        res.status(404).render("404", { message: err });
+      });
+  });
+
+  app.post("/editSite", (req, res) => {
+    siteData.editSite(req.body.id, req.body)
+      .then(() => res.redirect("/sites"))
+      .catch(err => {
+        res.render("500", { message: `I'm sorry, but we have encountered the following error: ${err}` });
+      });
+  });
+
+  app.get("/deleteSite/:id", (req, res) => {
+    siteData.deleteSite(req.params.id)
+      .then(() => res.redirect("/sites"))
+      .catch(err => {
+        res.render("500", { message: `I'm sorry, but we have encountered the following error: ${err}` });
+      });
+  });
+  
 
   app.use((req, res) => {
     res.status(404).render("404", { message: "Page not found" });
